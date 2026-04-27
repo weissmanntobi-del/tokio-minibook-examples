@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="EMPTY_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/example-01-tokio-echo-server/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example-03-graceful-shutdown-signal/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example-04-select-cancellation/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example-05-semaphore-fanout/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example-06-axum-production-template/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example-07-body-limit-timeout/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example-08-app-error/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example-09-broadcast-shutdown/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example-10-bounded-mpsc-channel/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example-11-tokio-tests/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example-11-tokio-tests/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/example-12-one-file-axum-starter/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/example-01-tokio-echo-server/target" />
+      <excludeFolder url="file://$MODULE_DIR$/example-03-graceful-shutdown-signal/target" />
+      <excludeFolder url="file://$MODULE_DIR$/example-04-select-cancellation/target" />
+      <excludeFolder url="file://$MODULE_DIR$/example-05-semaphore-fanout/target" />
+      <excludeFolder url="file://$MODULE_DIR$/example-06-axum-production-template/target" />
+      <excludeFolder url="file://$MODULE_DIR$/example-07-body-limit-timeout/target" />
+      <excludeFolder url="file://$MODULE_DIR$/example-08-app-error/target" />
+      <excludeFolder url="file://$MODULE_DIR$/example-09-broadcast-shutdown/target" />
+      <excludeFolder url="file://$MODULE_DIR$/example-10-bounded-mpsc-channel/target" />
+      <excludeFolder url="file://$MODULE_DIR$/example-11-tokio-tests/target" />
+      <excludeFolder url="file://$MODULE_DIR$/example-12-one-file-axum-starter/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

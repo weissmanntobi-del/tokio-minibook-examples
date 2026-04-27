@@ -1,3 +1,18 @@
+[workspace]
+members = [
+    "example-01-tokio-echo-server",
+    "example-02-spawn-blocking",
+    "example-03-graceful-shutdown-signal",
+    "example-04-select-cancellation",
+    "example-05-semaphore-fanout",
+    "example-06-axum-production-template",
+    "example-07-body-limit-timeout",
+    "example-08-app-error",
+    "example-09-broadcast-shutdown",
+    "example-10-bounded-mpsc-channel",
+    "example-11-tokio-tests",
+    "example-12-one-file-axum-starter",
+]
 [package]
 name = "tokio-lessons"
 version = "0.1.0"
@@ -42,3 +57,5 @@ path = "src/assignment-7.rs"
 [[bin]]
 name = "hw8"
 path = "src/assignment-8.rs"
+
+resolver = "2"
