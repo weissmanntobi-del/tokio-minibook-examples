@@ -1,63 +1,63 @@
 
-# Tokio Examples
+# Tokio Code Examples
 
-A collection of progressive assignments designed to teach asynchronous
-programming in Rust using [Tokio](https://tokio.rs/). Each assignment builds on
-concepts from previous ones, gradually introducing new async primitives and
-patterns.
+This ZIP contains runnable Rust examples extracted from **Tokio, Explained**.
 
-Each assignment file contains the full requirements and hints at the top. Try to
-implement each one yourself before looking at the solution code in `src/`.
+Each folder is an independent Cargo project. Most examples can be run with:
 
-## Prerequisites
-
-- Comfortable with Rust fundamentals (ownership, borrowing, traits, generics,
-  error handling)
-- Basic understanding of async/await syntax in Rust
-
-## Assignments
-
-| #   | Name                           | Key Concepts                                             |
-| --- | ------------------------------ | -------------------------------------------------------- |
-| [1] | Concurrent Web Fetcher         | `tokio::spawn`, `JoinHandle`, basic async error handling |
-| [2] | Rate-Limited Task Queue        | `Semaphore`, bounded concurrency, backpressure           |
-| [3] | Chat Server with Channels      | `TcpListener`, `broadcast` channel, `select!`            |
-| [4] | Graceful Shutdown Orchestrator | `CancellationToken`, `signal::ctrl_c`, `timeout`         |
-| [5] | Producer-Consumer Pipeline     | Bounded `mpsc` channels, multi-stage pipelines           |
-| [6] | Async Retry with Backoff       | Async generics, `tokio::time`, `#[tokio::test]`          |
-| [7] | Connection Pool                | `Mutex`, `Semaphore`, `Deref`/`Drop`, guard pattern      |
-| [8] | Custom Mini-Runtime (Bonus)    | `Future`, `Waker`, `RawWaker`, `Poll`, `Pin`             |
-
-## Getting Started
-
-Each assignment can be run with:
-
-```console
-cargo run --bin hw1
+```bash
+cd example-folder-name
+cargo run
 ```
 
-Tests can be run with:
+Some examples are small servers and keep running until you press `Ctrl+C`. The testing example also includes `cargo test`.
 
-```console
-cargo test --bin hw6
+## Examples
+
+| Folder | PDF source idea | What it demonstrates | Run command |
+|---|---|---|---|
+| `example-01-tokio-echo-server` | Section 5: "Echo, but right" | Tokio TCP echo server with per-connection tasks, a semaphore concurrency cap, and read timeouts | `cargo run` |
+| `example-02-spawn-blocking` | Section 6.1: `tokio::task::spawn_blocking` | Moving CPU-heavy work away from async runtime worker threads | `cargo run` |
+| `example-03-graceful-shutdown-signal` | Section 7.1: shutdown signal handler | Waiting for `Ctrl+C` / `SIGTERM` using Tokio signal support | `cargo run` |
+| `example-04-select-cancellation` | Section 7.2: `tokio::select!` cancellation | Racing normal work against shutdown/cancellation | `cargo run` |
+| `example-05-semaphore-fanout` | Section 7.3: semaphore-capped fan-out | Limiting concurrent spawned jobs with `tokio::sync::Semaphore` | `cargo run` |
+| `example-06-axum-production-template` | Sections 8.2-8.4 | Split `axum` + `tower-http` service with tracing, timeout, concurrency limit, and graceful shutdown | `cargo run` |
+| `example-07-body-limit-timeout` | Section 8.5 | Request body limits and request timeout middleware | `cargo run` |
+| `example-08-app-error` | Section 9 | `AppError` mapped to stable JSON HTTP responses with `IntoResponse` | `cargo run` |
+| `example-09-broadcast-shutdown` | Section 10.1 | Broadcasting a shutdown notification to multiple background tasks | `cargo run` |
+| `example-10-bounded-mpsc-channel` | Section 11.1 | Bounded `mpsc` channel for backpressure | `cargo run` |
+| `example-11-tokio-tests` | Section 12 | `#[tokio::test]`, paused time, and deterministic timeout tests | `cargo run` and `cargo test` |
+| `example-12-one-file-axum-starter` | Section 15.2 | Compact one-file production-style starter | `cargo run` |
+
+## Notes about incomplete snippets
+
+The PDF contains several short teaching snippets that are intentionally partial, for example:
+
+- `do_expensive_thing()` in the `spawn_blocking` snippet
+- `do_work()` in the `tokio::select!` cancellation snippet
+- `items` and `process(item)` in the semaphore fan-out snippet
+- `Job`, `job`, and `handle(job)` in the bounded channel snippet
+- the `tokio::test` examples without a surrounding test crate
+- middleware fragments such as request body limits
+
+Those snippets were converted into minimal working examples while preserving the original learning purpose.
+
+## Dependency choices
+
+- Tokio uses `version = "1"`, so Cargo resolves to the latest compatible stable Tokio 1.x release.
+- Examples use minimal Tokio feature flags instead of `features = ["full"]` where practical, matching the mini-book's guidance.
+- The `axum` examples use current stable-style dependencies: `axum = "0.8"`, `tower = "0.5"`, and `tower-http = "0.6"`.
+- For current `tower-http`, timeout examples use `TimeoutLayer::with_status_code(...)` instead of the older/deprecated `TimeoutLayer::new(...)` form.
+
+## Quick smoke test
+
+From the ZIP root after extracting:
+
+```bash
+for dir in example-*; do
+  echo "Checking $dir"
+  (cd "$dir" && cargo check)
+done
 ```
 
-> **NOTE:** Replace `hw1` with the assignment number (e.g., `hw2`, `hw3`, etc.).
 
-## Resources
-
-- [Tokio Tutorial](https://tokio.rs/tokio/tutorial) — official walkthrough from
-  setup to a working mini-Redis
-- [Tokio API Docs](https://docs.rs/tokio/latest/tokio/) — reference for all
-  modules and types
-- [mini-redis](https://github.com/tokio-rs/mini-redis) — a real-world example
-  project using many of these patterns
-
-[1]: ./src/assignment-1.rs
-[2]: ./src/assignment-2.rs
-[3]: ./src/assignment-3.rs
-[4]: ./src/assignment-4.rs
-[5]: ./src/assignment-5.rs
-[6]: ./src/assignment-6.rs
-[7]: ./src/assignment-7.rs
-[8]: ./src/assignment-8.rs
