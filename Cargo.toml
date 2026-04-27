@@ -1,0 +1,44 @@
+[package]
+name = "tokio-lessons"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.102"
+chrono = "0.4.44"
+rand = "0.10.0"
+reqwest = "0.13.2"
+tokio = { version = "1.49.0", features = ["full", "test-util"] }
+tokio-util = { version = "0.7.18", features = ["full"] }
+
+[[bin]]
+name = "hw1"
+path = "src/assignment-1.rs"
+
+[[bin]]
+name = "hw2"
+path = "src/assignment-2.rs"
+
+[[bin]]
+name = "hw3"
+path = "src/assignment-3.rs"
+
+[[bin]]
+name = "hw4"
+path = "src/assignment-4.rs"
+
+[[bin]]
+name = "hw5"
+path = "src/assignment-5.rs"
+
+[[bin]]
+name = "hw6"
+path = "src/assignment-6.rs"
+
+[[bin]]
+name = "hw7"
+path = "src/assignment-7.rs"
+
+[[bin]]
+name = "hw8"
+path = "src/assignment-8.rs"
